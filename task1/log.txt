@@ -1,0 +1,11 @@
+commit 3d30f4f78262e910c9b2fcb34151b246e0f2f0b5
+Author: pnazaroff <p.nazaroff42@gmail.com>
+Date:   Mon Feb 1 23:06:09 2021 +0300
+
+    add status.txt
+
+commit 33bfff700cbac7401c2f125c5ab0b184d57dc3ee
+Author: pnazaroff <p.nazaroff42@gmail.com>
+Date:   Mon Feb 1 22:57:29 2021 +0300
+
+    add .gitignore
