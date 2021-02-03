@@ -1,0 +1,19 @@
+services:
+  nginx:
+    build: .
+    deploy:
+        replicas: 5
+
+
+  py:
+    build: ./py/
+    depends_on:
+        - db
+
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
