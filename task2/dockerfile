@@ -1,0 +1,9 @@
+FROM nginx:latest
+ENV DEVOPS="pnazaroff"
+EXPOSE 8080
+RUN sed -i 's/Welcome to nginx/'$DEVOPS'/' /usr/share/nginx/html/index.html
+
+
+
+
+
