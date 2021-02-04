@@ -4,7 +4,6 @@ services:
     deploy:
         replicas: 5
 
-
   py:
     build: ./py/
     depends_on:

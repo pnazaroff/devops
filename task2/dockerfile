@@ -1,9 +1,10 @@
-FROM nginx:latest
+FROM ubuntu
+RUN apt update
+
+RUN apt-get install nginx -y
+
 ENV DEVOPS="pnazaroff"
 EXPOSE 8080
-RUN sed -i 's/Welcome to nginx/'$DEVOPS'/' /usr/share/nginx/html/index.html
-
-
-
-
+RUN sed -i 's/Welcome to nginx/'$DEVOPS'/' /var/www/html/index.nginx-debian.html
+CMD ["nginx", "-g", "daemon off;"]
 
