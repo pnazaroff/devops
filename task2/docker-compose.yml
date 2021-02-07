@@ -1,18 +1,23 @@
 services:
-  nginx:
-    build: .
+  webserver:
+    build: ./
     deploy:
-        replicas: 5
+      mode: replicated
+      replicas: 5
+    ports:
+       - "8081-8085:8080"
 
-  py:
-    build: ./py/
-    depends_on:
-        - db
+#  py:
+#    build: ./py/        
+#    ports:
+#        - "3333:3333"
+#    depends_on:
+#        - db
 
 
-  db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#  db:
+#    image: mysql
+#    command: --default-authentication-plugin=mysql_native_password
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
