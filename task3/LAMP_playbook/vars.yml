@@ -1,0 +1,7 @@
+---
+mysql_root_password: "devops"
+app_user: "devops"
+http_host: "lamp.test"
+http_conf: "lamp.conf"
+http_port: "80"
+disable_default: true
