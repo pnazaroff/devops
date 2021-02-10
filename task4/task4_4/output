@@ -1,0 +1,7 @@
+Started by user jen kins
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/test
+[test] $ /bin/sh -xe /tmp/jenkins8794159819177248861.sh
++ date
+Wed 10 Feb 2021 01:37:49 PM UTC
+Finished: SUCCESS

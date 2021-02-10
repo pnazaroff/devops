@@ -1,0 +1,78 @@
+tarted by user jen kins
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/test_docker_pipeline
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $SECRET_PASSWORD
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (download)
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/pnazaroff/devops.git # timeout=10
+Fetching upstream changes from https://github.com/pnazaroff/devops.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.20.1'
+ > git fetch --tags --force --progress -- https://github.com/pnazaroff/devops.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 0f58fd149e1ba07dd4089e6a6f91b1f32f6c6bba (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0f58fd149e1ba07dd4089e6a6f91b1f32f6c6bba # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 0f58fd149e1ba07dd4089e6a6f91b1f32f6c6bba # timeout=10
+Commit message: "add dcokerfile my previos pr"
+ > git rev-list --no-walk 0f58fd149e1ba07dd4089e6a6f91b1f32f6c6bba # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (build)
+[Pipeline] sh
++ docker build ./task4/nginx/ -t test/nginx:latest
+Sending build context to Docker daemon  2.048kB
+
+Step 1/7 : FROM ubuntu
+ ---> f63181f19b2f
+Step 2/7 : RUN apt update
+ ---> Using cache
+ ---> bcdc53061ff6
+Step 3/7 : RUN apt-get install nginx -y
+ ---> Using cache
+ ---> 9074d5a0c84e
+Step 4/7 : ENV DEVOPS="pnazaroff"
+ ---> Using cache
+ ---> 9ef480387121
+Step 5/7 : EXPOSE 8080
+ ---> Using cache
+ ---> b79e2d886cb4
+Step 6/7 : RUN sed -i 's/Welcome to nginx/'$DEVOPS'/' /var/www/html/index.nginx-debian.html
+ ---> Using cache
+ ---> c4ec77b97700
+Step 7/7 : CMD ["nginx", "-g", "daemon off;"]
+ ---> Using cache
+ ---> f4d92d52f8e6
+Successfully built f4d92d52f8e6
+Successfully tagged test/nginx:latest
+[Pipeline] sh
++ echo ****
+****
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (deploy)
+[Pipeline] sh
++ docker run --rm -d --env PASSWORD=**** -p 8081:8080 test/nginx:latest
+ec79f7913019c06261a4ee88d4ad2aedff03f314b7598af5992f073ead275401
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
