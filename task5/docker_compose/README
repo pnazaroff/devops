@@ -1,0 +1,7 @@
+psql -h localhost -p 5432 -d docker -U docker --password
+createdb summary;
+create table Students (ID SERIAL, Student VARCHAR(50), StudentId SERIAL);
+create table Marks (ID SERIAL, StudentId SERIAL, Task1 VARCHAR(50), Task2 VARCHAR(50), Task3 VARCHAR(50), Task4 VARCHAR(50));
+COPY marks FROM '/home/db.csv' WITH (FORMAT csv);
+COPY students FROM '/home/db_names.csv' WITH (FORMAT csv);
+SELECT * FROM marks WHERE StudentId IN (SELECT StudentId FROM Students WHERE Student='Назаров');
