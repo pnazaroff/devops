@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  
+  tasks:
+   - name: copy_files
+     copy: src={{ item.src }} dest={{ item.dest }}
+     with_items:
+       - { src: '/home/rglr/exadel_devops/task5/db.csv', dest: '/home/devops/db.csv' }
+       - { src: '/home/rglr/exadel_devops/task5/db_names.csv', dest: '/home/devops/db_names.csv' }
+       - { src: '/home/rglr/exadel_devops/task5/dockerfile', dest: '/home/devops/dockerfile' }
+       - { src: '/home/rglr/exadel_devops/task5/docker_compose/docker-compose.yml', dest: '/home/devops/docker-compose.yml' }
+       - { src: '/home/rglr/exadel_devops/task5/docker_compose/my-pg_hba.conf', dest: '/home/devops/my-pg_hba.conf' }
+       - { src: '/home/rglr/exadel_devops/task5/docker_compose/my-postgres.conf', dest: '/home/devops/my-postgres.conf' }
+         # - name build container
+  #   sh docker build
