@@ -1,0 +1,7 @@
+---
+
+zbx_srv: 192.168.1.32
+#create_containers: 1
+#default_container_name: docker
+#default_container_image: ubuntu
+#default_container_command: sleep 1d
