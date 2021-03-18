@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: ''
+  apiUrl: '/api'
 //  apiUrl: 'https://exadel-bonus-plus-app.herokuapp.com',
 };
